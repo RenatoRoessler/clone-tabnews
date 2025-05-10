@@ -8,12 +8,13 @@ async function query(queryObject) {
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,
   });
-  await clinet.connect();
   try {
+    await clinet.connect();
     const result = await clinet.query(queryObject);
     return result;
   } catch (error) {
     console.error(error);
+    throw error;
   } finally {
     await clinet.end();
   }
