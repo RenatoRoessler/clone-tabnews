@@ -9,9 +9,14 @@ async function query(queryObject) {
     database: process.env.POSTGRES_DB,
   });
   await clinet.connect();
-  const result = await clinet.query(queryObject);
-  await clinet.end();
-  return result;
+  try {
+    const result = await clinet.query(queryObject);
+    return result;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await clinet.end();
+  }
 }
 
 export default {
