@@ -14,4 +14,4 @@ jobs:
 
       - run: npm ci
 
-      - run: npm test:git
+      - run: npm run test:git
