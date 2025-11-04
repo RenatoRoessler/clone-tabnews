@@ -12,9 +12,6 @@ jobs:
         with:
           node-version: "lts/hydrogen"
 
-      - name: Levantar serviços via Docker Compose
-        run: docker compose -f infra/compose.yaml up -d
-
       - run: npm ci
 
-      - run: npm test
+      - run: npm test:git
